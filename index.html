@@ -1,8 +1,43 @@
 ---
 layout: default
-title: Modules to complete
+title: Open the console...
 ---
 
 <div id="home">
   <h2>{{ page.title }}</h2>
 </div>
+
+<script type="text/javascript">
+
+var getConfig = new XMLHttpRequest();
+
+getConfig.open('GET', '/config.json');
+
+getConfig.onreadystatechange = function () {
+  if (this.readyState === 4) {
+    testLRSConnection(JSON.parse(this.responseText));
+  }
+};
+
+getConfig.send();
+
+function testLRSConnection(config) {
+
+  var Request = new XMLHttpRequest();
+  
+  Request.open('GET', config.lrs.endpoint + '_api/analyses/scoring?activity=' + encodeURI(config.activity));
+  
+  Request.setRequestHeader('Authorization', 'Basic ' + Base64.encode(config.lrs.username + ':' + config.lrs.password));
+  
+  Request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      console.log('Status:', this.status);
+      console.log('Headers:', this.getAllResponseHeaders());
+      console.log('Body:', this.responseText);
+    }
+  };
+  
+  Request.send();
+}
+
+</script>

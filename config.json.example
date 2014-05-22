@@ -1,0 +1,8 @@
+{
+  "lrs" : {
+    "endpoint": "https://YOURACCOUNT.waxlrs.com/TCAPI/",
+    "username": "USERNAME",
+    "password": "PASSWORD"
+  },
+  "activity" : "ACTIVITY_ID"
+}
