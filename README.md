@@ -5,6 +5,7 @@ Test page demonstrating how to display the completion status of each module in a
 
 ## Requirements
 
+* A [WaxLRS](http://www.waxlrs.com) account
 * [Jekyll](http://jekyllrb.com)
 
 ## Installation
